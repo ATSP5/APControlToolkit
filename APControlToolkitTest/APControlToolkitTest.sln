@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APControlToolkitTest", "APControlToolkitTest\APControlToolkitTest.csproj", "{72AD8909-5A30-4DFE-9C1D-77AD80E8C4B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APControlToolkit", "APControlToolkit\APControlToolkit.csproj", "{286E4367-851C-4F41-8017-3A28F08FBA73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{72AD8909-5A30-4DFE-9C1D-77AD80E8C4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72AD8909-5A30-4DFE-9C1D-77AD80E8C4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72AD8909-5A30-4DFE-9C1D-77AD80E8C4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{286E4367-851C-4F41-8017-3A28F08FBA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286E4367-851C-4F41-8017-3A28F08FBA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286E4367-851C-4F41-8017-3A28F08FBA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286E4367-851C-4F41-8017-3A28F08FBA73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "APControlToolkitTest/1.0.0": {
+        "dependencies": {
+          "APControlToolkit": "1.0.0"
+        },
+        "runtime": {
+          "APControlToolkitTest.dll": {}
+        }
+      },
+      "APControlToolkit/1.0.0": {
+        "runtime": {
+          "APControlToolkit.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "APControlToolkitTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "APControlToolkit/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

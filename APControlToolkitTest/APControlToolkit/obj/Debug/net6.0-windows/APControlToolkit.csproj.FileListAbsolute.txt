@@ -1,0 +1,17 @@
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.csproj.AssemblyReference.cache
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit_MarkupCompile.cache
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit_MarkupCompile.lref
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\bin\Debug\net6.0-windows\APControlToolkit.deps.json
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\bin\Debug\net6.0-windows\APControlToolkit.dll
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\bin\Debug\net6.0-windows\APControlToolkit.pdb
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.g.resources
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.AssemblyInfoInputs.cache
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.AssemblyInfo.cs
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.csproj.CoreCompileInputs.cache
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.dll
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\refint\APControlToolkit.dll
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APControlToolkit.pdb
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\ref\APControlToolkit.dll
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APUpIntegerDownButton.g.cs
+C:\Adam\CSRepositories\APControlToolkit\APControlToolkitTest\APControlToolkit\obj\Debug\net6.0-windows\APUpIntegerDownButton.baml
