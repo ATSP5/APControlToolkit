@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Z2kDmLaqLxzJEEWh4uQxP2OnvYylMz2onrA+VmF/RdQCI6Y1M0PQgGzVg+u5VE+Y7UzH9GXxjm1qitCnPfDN+w==",
+  "dgSpecHash": "JjC7LN8CiGp+VGmJxGH0rUIVHmmXzUa3KNkVp/Fyr5qFQMdITaHrxwT1cT1S5cy0VEiMXpO8qLcapH3FUiKFQQ==",
   "success": true,
   "projectFilePath": "C:\\Adam\\CSRepositories\\APControlToolkit\\APControlToolkitTest\\APControlToolkitTest\\APControlToolkitTest.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Adam\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\Adam\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\Adam\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }

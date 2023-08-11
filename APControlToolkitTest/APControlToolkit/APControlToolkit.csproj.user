@@ -2,7 +2,15 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Page Update="APUpIntegerDownButton.xaml">
+    <Compile Update="APUpDownDouble.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="APUpDownDouble.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="APUpDownInteger.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

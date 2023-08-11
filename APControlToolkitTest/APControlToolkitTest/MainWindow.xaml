@@ -7,10 +7,17 @@
         xmlns:apct="clr-namespace:APControlToolkit;assembly=APControlToolkit"
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="DarkCyan">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="50" MinWidth="100">
-            <apct:APUpIntegerDownButton/>
+            <apct:APUpDownDouble Step="1.25"                                  
+                                        Width="150"
+                                        Height="30"
+                                        MaxValue="30"
+                                        RoundDigits="2"
+                                        TextBackgroundColor="Aqua"
+                                        UpButtonForeground="White"
+                                        DownButtonForeground="White"/>
         </StackPanel>
     </Grid>
 </Window>

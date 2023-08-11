@@ -1,0 +1,60 @@
+<UserControl x:Class="APControlToolkit.APUpDownInteger"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:APControlToolkit"
+             mc:Ignorable="d" MinHeight="30" Height="30">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Column 1: Stretches to fill the remaining space -->
+            <ColumnDefinition Width="*" />
+            <!-- Column 2: Fixed width for the buttons -->
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- TextBox: Stretces to fill the remaining space -->
+        <TextBox Grid.Column="0"
+                 Name="tbValue"
+                 MinWidth="80"
+                 FontSize="15"
+                 Text="0"
+                 BorderBrush="#FF292828"
+                 BorderThickness="1"
+                 Style="{StaticResource MaterialDesignTextBoxBase}"
+                 TextChanged="tbValue_TextChanged" 
+                 VerticalContentAlignment="Center"
+                 HorizontalAlignment="Stretch"/>
+
+        <!-- First Button -->
+        <Button Grid.Column="1" 
+                Content="{materialDesign:PackIcon Kind=Add, Size=10}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Background="{StaticResource MaterialDesignDarkBackground}"
+                BorderBrush="{StaticResource MaterialDesignDarkBackground}"
+                Name="Up"         
+                HorizontalAlignment="Stretch"
+                Click="Up_Click"/>
+
+        <!-- Second Button -->
+        <Button Grid.Column="2"
+                Name="Down" 
+                
+                Content="{materialDesign:PackIcon Kind=Minus,Size=10}"   
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Background="{StaticResource MaterialDesignDarkBackground}"
+                BorderBrush="{StaticResource MaterialDesignDarkBackground}"
+                Click="Down_Click"/>
+    </Grid>
+</UserControl>
