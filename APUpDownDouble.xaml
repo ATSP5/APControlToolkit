@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:APControlToolkit"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             KeyDown="UserControl_KeyDown"
              MinHeight="30" Height="30">
     <UserControl.Resources>
         <ResourceDictionary>

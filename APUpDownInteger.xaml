@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             KeyDown="UserControl_KeyDown"
              xmlns:local="clr-namespace:APControlToolkit"
              mc:Ignorable="d" MinHeight="30" Height="30">
     <UserControl.Resources>

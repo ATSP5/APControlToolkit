@@ -19,7 +19,7 @@ namespace APControlToolkit
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class APUpDownInteger : UserControl, INotifyPropertyChanged
+    public partial class APUpDownInteger : UserControl
     {
         private Color _textBackgroundColor;
         public Color TextBackgroundColor
@@ -43,20 +43,14 @@ namespace APControlToolkit
 
         private Color _downButtonBackground;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public Color DownButtonBackground
         { get { return _upButtonForeground; } set { _upButtonForeground = value; Down.Background = new SolidColorBrush(value); } }
 
-        private int _value;
-        public int Value 
+        private int _inValue;
+        public int InValue 
         {
-            get { return _value; } 
-            set { _value = value; OnPropertyChanged(nameof(Value)); }
+            get { return (int)GetValue(ControlValueProperty); }
+            set { SetValue(ControlValueProperty, value); }
         }
 
         public int MaxValue { get; set; } = int.MaxValue;
@@ -65,32 +59,69 @@ namespace APControlToolkit
         public APUpDownInteger()
         {
             InitializeComponent();
-            Value = 0;
+            InValue = 0;
             Step = 1;
-            DataContext = this;
+            
         }
         // Dependency Property for Value
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(APUpDownDouble), new PropertyMetadata(0.0));
+        public static readonly DependencyProperty ControlValueProperty =
+           DependencyProperty.Register(nameof(InValue), typeof(int), typeof(APUpDownInteger),
+           new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, ControlValueChangedCallback));
+
+        private static void ControlValueChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var customControl = (APUpDownInteger)d;
+
+            TextBox textBox = customControl.tbValue;
+
+            textBox.Text = customControl.InValue.ToString();
+        }
+
         private void Up_Click(object sender, RoutedEventArgs e)
         {
-            Value=Value+Step>MaxValue? Value : Value+Step;
-            tbValue.Text = Value.ToString();
+            InValue=InValue+Step>MaxValue? InValue : InValue+Step;
+            tbValue.Text = InValue.ToString();
         }
 
         private void Down_Click(object sender, RoutedEventArgs e)
         {
-            Value=Value+Step<MinValue? Value: Value-Step;
-            tbValue.Text = Value.ToString();
+            InValue=InValue+Step<MinValue? InValue: InValue-Step;
+            tbValue.Text = InValue.ToString();
         }
+
+        private bool isUpdatingTextBox = false;
         private void tbValue_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var result = 0;
-            if (int.TryParse(tbValue.Text, out result))
+            if (isUpdatingTextBox)
+                return;
+
+            var valueText = tbValue.Text;
+
+            if (int.TryParse(valueText, out int result))
             {
-                Value = result>MaxValue? Value : result < MinValue? Value : result ;
+
+                if (result < MinValue)
+                    result = MinValue;
+                else if (result > MaxValue)
+                    result = MaxValue;
+
+                isUpdatingTextBox = true;
+
+                InValue = result;
+
+                isUpdatingTextBox = false;
             }
-            tbValue.Text = Value.ToString();
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                tbValue.Text = InValue.ToString();
+                isUpdatingTextBox = false;
+                tbValue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                e.Handled = true;
+            }
         }
     }
 }

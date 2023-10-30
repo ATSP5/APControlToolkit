@@ -20,7 +20,7 @@ namespace APControlToolkit
     /// <summary>
     /// Logika interakcji dla klasy APUpDownDouble.xaml
     /// </summary>
-    public partial class APUpDownDouble : UserControl, INotifyPropertyChanged
+    public partial class APUpDownDouble : UserControl
     {
         private Color _textBackgroundColor;
         public Color TextBackgroundColor
@@ -46,11 +46,24 @@ namespace APControlToolkit
         public Color DownButtonBackground
         { get { return _upButtonForeground; } set { _upButtonForeground = value; Down.Background = new SolidColorBrush(value); } }
 
-        private double _value;
-        public double Value 
+        public double DValue
         {
-            get { return _value; }
-            set { _value = value; OnPropertyChanged(nameof(Value)); }
+            get { return (double)GetValue(ControlValueProperty); }
+            set { SetValue(ControlValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty ControlValueProperty =
+            DependencyProperty.Register(nameof(DValue), typeof(double), typeof(APUpDownDouble),
+            new FrameworkPropertyMetadata(0.0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, ControlValueChangedCallback));
+
+        private static void ControlValueChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var customControl = (APUpDownDouble)d;
+
+            TextBox textBox = customControl.tbValue;
+
+            textBox.Text = customControl.DValue.ToString(); 
+
         }
 
         public double MaxValue { get; set; } = double.MaxValue;
@@ -58,12 +71,6 @@ namespace APControlToolkit
         public double Step { get; set; }
 
         private string _roundingFormat;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public int RoundDigits { get; set; } = 1;
 
@@ -74,44 +81,52 @@ namespace APControlToolkit
         {
             InitializeComponent();
             SetRoundingFormat();
-            Value = 0.0;
+            DValue = 0.0;
             Step = 1.0;
-            DataContext = this;
         }
-        // Dependency Property for Value
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(APUpDownDouble), new PropertyMetadata());
-
+       
         private void Up_Click(object sender, RoutedEventArgs e)
         {
             SetRoundingFormat();
-            Value = Value + Step > MaxValue ? Value : Value + Step;
-            tbValue.Text = Value.ToString(_roundingFormat);
+            DValue = DValue + Step > MaxValue ? DValue : DValue + Step;
+            tbValue.Text = DValue.ToString(_roundingFormat);
         }
 
         private void Down_Click(object sender, RoutedEventArgs e)
         {
             SetRoundingFormat();
-            Value = Value + Step < MinValue ? Value : Value - Step;
-            tbValue.Text = Value.ToString(_roundingFormat);
+            DValue = DValue + Step < MinValue ? DValue : DValue - Step;
+            tbValue.Text = DValue.ToString(_roundingFormat);
         }
+
+        private bool isUpdatingTextBox = false;
+
         private void tbValue_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var valueText = tbValue.Text.ToString();
-            if (!valueText.Contains(_formatInfo.CurrencyDecimalSeparator))
+            if (isUpdatingTextBox)
+                return;
+
+            var valueText = tbValue.Text;
+
+            valueText = valueText.Replace(",", _formatInfo.CurrencyDecimalSeparator).Replace(".", _formatInfo.CurrencyDecimalSeparator);
+
+            if (double.TryParse(valueText, out double result))
             {
-                if (_formatInfo.CurrencyDecimalSeparator == ",")
-                    valueText = tbValue.Text.Replace(".", ",");
-                else
-                    valueText = tbValue.Text.Replace(",", ".");
-            }              
-            SetRoundingFormat();
-            if(double.TryParse(valueText,  out double result)==true)
-                Value = result > MaxValue ? Value : result < MinValue ? Value : result;                
-            
-            if(tbValue.Text != Value.ToString(_roundingFormat))
-                tbValue.Text = Value.ToString(_roundingFormat);
+
+                if (result < MinValue)
+                    result = MinValue;
+                else if (result > MaxValue)
+                    result = MaxValue;
+
+                isUpdatingTextBox = true;
+
+                DValue = result;
+
+                isUpdatingTextBox = false;
+            }
         }
+
+
         private void SetRoundingFormat()
         {
             _roundingFormat = "0";
@@ -123,6 +138,17 @@ namespace APControlToolkit
                     _roundingFormat += "0";
                 }
             }
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                tbValue.Text = DValue.ToString(_roundingFormat);
+                isUpdatingTextBox = false;
+                tbValue.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                e.Handled = true;
+            }  
         }
     }
 }
